@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreiskershop - Vente de Vêtements ND Kreisker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🛍️ KreiskerShop</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#commande">Commander</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur KreiskerShop</h1>
+            <p>Acheter les vêtements personnalisés avec le logo du groupe scolaire Notre-Dame du Kreisker</p>
+            <button class="btn btn-primary" onclick="scrollTo('produits')">Découvrir les produits</button>
+        </div>
+    </section>
+
+    <!-- Produits Section -->
+    <section id="produits" class="produits">
+        <div class="container">
+            <h2>Nos Produits</h2>
+            <div class="produits-grid">
+                <!-- Produit 1 -->
+                <div class="produit-card">
+                    <div class="produit-image">👕</div>
+                    <h3>T-Shirt</h3>
+                    <p class="prix">15€</p>
+                    <p class="description">T-shirt 100% coton avec logo brodé</p>
+                    <div class="sizes">
+                        <span>Tailles:</span>
+                        <select>
+                            <option>XS</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select>
+                    </div>
+                    <div class="colors">
+                        <span>Couleurs:</span>
+                        <div class="color-options">
+                            <button class="color-btn" style="background-color: #000;"></button>
+                            <button class="color-btn" style="background-color: #fff; border: 2px solid #333;"></button>
+                            <button class="color-btn" style="background-color: #0066cc;"></button>
+                            <button class="color-btn" style="background-color: #ff6b6b;"></button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addToCart('T-Shirt', 15)">Ajouter au panier</button>
+                </div>
+
+                <!-- Produit 2 -->
+                <div class="produit-card">
+                    <div class="produit-image">🎽</div>
+                    <h3>Sweat-Shirt</h3>
+                    <p class="prix">25€</p>
+                    <p class="description">Sweat-shirt chaud avec logo floqué</p>
+                    <div class="sizes">
+                        <span>Tailles:</span>
+                        <select>
+                            <option>XS</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select>
+                    </div>
+                    <div class="colors">
+                        <span>Couleurs:</span>
+                        <div class="color-options">
+                            <button class="color-btn" style="background-color: #000;"></button>
+                            <button class="color-btn" style="background-color: #1a1a1a;"></button>
+                            <button class="color-btn" style="background-color: #333;"></button>
+                            <button class="color-btn" style="background-color: #0066cc;"></button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addToCart('Sweat-Shirt', 25)">Ajouter au panier</button>
+                </div>
+
+                <!-- Produit 3 -->
+                <div class="produit-card">
+                    <div class="produit-image">🧢</div>
+                    <h3>Casquette</h3>
+                    <p class="prix">12€</p>
+                    <p class="description">Casquette ajustable avec logo brodé</p>
+                    <div class="sizes">
+                        <span>Taille:</span>
+                        <select>
+                            <option>Unique</option>
+                        </select>
+                    </div>
+                    <div class="colors">
+                        <span>Couleurs:</span>
+                        <div class="color-options">
+                            <button class="color-btn" style="background-color: #000;"></button>
+                            <button class="color-btn" style="background-color: #fff; border: 2px solid #333;"></button>
+                            <button class="color-btn" style="background-color: #0066cc;"></button>
+                            <button class="color-btn" style="background-color: #1a1a1a;"></button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addToCart('Casquette', 12)">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panier Section -->
+    <section id="panier" class="panier-section">
+        <div class="container">
+            <h2>Mon Panier</h2>
+            <div class="panier-content">
+                <table class="panier-table">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Quantité</th>
+                            <th>Prix Unitaire</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="panier-body">
+                        <tr class="empty-cart">
+                            <td colspan="5">Votre panier est vide</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="panier-summary">
+                    <p><strong>Total:</strong> <span id="total">0€</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commande Section -->
+    <section id="commande" class="commande">
+        <div class="container">
+            <h2>Bon de Commande</h2>
+            <form class="commande-form" id="commandeForm" onsubmit="submitCommande(event)">
+                <div class="form-section">
+                    <h3>Informations Personnelles</h3>
+                    <div class="form-group">
+                        <label for="nom">Nom Complet *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="classe">Classe *</label>
+                        <select id="classe" name="classe" required>
+                            <option value="">-- Sélectionnez votre classe --</option>
+                            <option value="6eme">6ème (Collège ND Espérance)</option>
+                            <option value="5eme">5ème (Collège ND Espérance)</option>
+                            <option value="4eme">4ème (Collège ND Espérance)</option>
+                            <option value="3eme">3ème (Collège ND Espérance)</option>
+                            <option value="2nd_general">2nde Générale (Lycée ND)</option>
+                            <option value="1st_general">1ère Générale (Lycée ND)</option>
+                            <option value="term_general">Terminale Générale (Lycée ND)</option>
+                            <option value="2nd_pro">2nde Professionnelle (Lycée ND)</option>
+                            <option value="1st_pro">1ère Professionnelle (Lycée ND)</option>
+                            <option value="term_pro">Terminale Professionnelle (Lycée ND)</option>
+                            <option value="bts">BTS (Lycée ND)</option>
+                            <option value="sainte_ursule">Collège Sainte-Ursule</option>
+                            <option value="personnel">Personnel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Détails de la Commande</h3>
+                    <div id="commande-details">
+                        <p class="info-panier">Aucun produit dans le panier. Veuillez ajouter des produits.</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Notes Spéciales</h3>
+                    <div class="form-group">
+                        <label for="notes">Notes/Demandes spéciales</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Ajoutez vos remarques..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section total-section">
+                    <h3>Récapitulatif</h3>
+                    <p><strong>Total de la commande:</strong> <span id="commande-total">0€</span></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">✓ Confirmer la Commande</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Pour toute question ou demande spéciale:</p>
+            <p><strong>Email:</strong> <a href="mailto:contact@kreisker.fr">contact@kreisker.fr</a></p>
+            <p><strong>Lycée Notre-Dame du Kreisker:</strong> Saint-Pol de Léon</p>
+            <p><strong>Responsables:</strong> Mme Merret et les élèves de 2nde Professionnelle (GATL & MRC)</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 KreiskerShop - Groupe scolaire Notre-Dame du Kreisker. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
